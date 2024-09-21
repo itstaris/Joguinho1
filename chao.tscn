@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3e1rfi372nlp"]
+
+[ext_resource type="Script" path="res://Scripts/chao.gd" id="1_mxrcc"]
+[ext_resource type="Texture2D" uid="uid://myg6ok7r1jy3" path="res://imagens lindas/chaoo.png" id="1_xeng8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_etgms"]
+
+[node name="chao" type="Area2D"]
+script = ExtResource("1_mxrcc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(576, 608)
+texture = ExtResource("1_xeng8")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(1728, 608)
+texture = ExtResource("1_xeng8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_etgms")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

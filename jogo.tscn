@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://dqpm5em7ovxut"]
+
+[ext_resource type="Script" path="res://Scripts/game.gd" id="1_ipkrl"]
+[ext_resource type="PackedScene" uid="uid://b38a8g4hk777g" path="res://personagem.tscn" id="2_ivo64"]
+[ext_resource type="PackedScene" uid="uid://bchcqmg60ol1" path="res://obstaculos.tscn" id="2_u7xp0"]
+[ext_resource type="Texture2D" uid="uid://csacw1nslnhsj" path="res://imagens lindas/20230602_133630.jpg" id="3_wrrwe"]
+[ext_resource type="PackedScene" uid="uid://c3e1rfi372nlp" path="res://chao.tscn" id="4_jsact"]
+
+[node name="Node" type="Node"]
+script = ExtResource("1_ipkrl")
+obstaculo_scene = ExtResource("2_u7xp0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(578, 295.159)
+rotation = 1.5708
+scale = Vector2(0.143287, 0.374746)
+texture = ExtResource("3_wrrwe")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_ivo64")]
+
+[node name="TimerdoObstaculo" type="Timer" parent="."]
+wait_time = 1.5
+
+[node name="chao" parent="." instance=ExtResource("4_jsact")]
+
+[connection signal="timeout" from="TimerdoObstaculo" to="." method="_on_timerdo_obstaculo_timeout"]
+[connection signal="hit" from="chao" to="." method="_on_chao_hit"]
